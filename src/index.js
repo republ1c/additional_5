@@ -24,13 +24,18 @@ module.exports = function check(str, bracketsConfig) {
     for (i; i < str1.length; i++) {
       bracketOpen = str1.indexOf(bracketsConfig[j][0], i);
       bracketClose = str1.indexOf(bracketsConfig[j][1], i);
-      if (bracketOpen > bracketClose) { return result = false }
+      if (bracketOpen > bracketClose) {
+        return result = false;
+      }
       if (bracketClose - bracketOpen === 2) {
         if (!((str1[bracketClose - 1] === bracketsConfig[j][1]) || (str1[bracketOpen + 1] === bracketsConfig[j][0]))) {
-          return result = false; break;
+          return result = false;
+          break;
         }
       }
-      if ((bracketOpen === -1) || (bracketClose === -1)) { break; }
+      if ((bracketOpen === -1) || (bracketClose === -1)) {
+        break;
+      }
       else {
         str1 = str1.substr(0, bracketOpen) + str1.substr(++bracketOpen);
         str1 = str1.substr(0, bracketClose - 1) + str1.substr(++bracketClose - 1);
